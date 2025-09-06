@@ -10,7 +10,12 @@ const paymentRoutes = require('./routes/payment');
 const { notFound, errorHandler } = require('./middleware/errorHandler');
 
 const app = express();
-app.use(cors());
+app.use(cors({
+  origin: process.env.NODE_ENV === 'production' 
+    ? ['https://crazydeal.vercel.app', 'https://www.crazydeal.com'] 
+    : ['http://localhost:3000'],
+  credentials: true
+}));
 app.use(express.json());
 
 // Routes
