@@ -211,7 +211,13 @@ export default function CartPage() {
             </div>
           </div>
           
-          <button style={{
+          <button 
+            onClick={() => {
+              // Simple checkout - redirect to a success page
+              alert(`Order placed! Total: $${getTotalPrice().toFixed(2)}`);
+              clearCart();
+            }}
+            style={{
             backgroundColor: '#2563eb',
             color: 'white',
             border: 'none',

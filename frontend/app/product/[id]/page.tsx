@@ -10,38 +10,132 @@ type Product = {
 };
 
 export async function generateStaticParams() {
-  return [
-    { id: '1' },
-    { id: '2' },
-    { id: '3' },
-    { id: '4' },
-    { id: '5' },
-    { id: '6' }
-  ];
+  // Fetch products from backend to generate static params
+  try {
+    const res = await fetch('https://crazydeal-api.railway.app/api/products');
+    const data = await res.json();
+    return data.products.map((product: any) => ({
+      id: product._id,
+    }));
+  } catch (error) {
+    // Fallback to hardcoded IDs if API fails
+    return [
+      { id: '1' },
+      { id: '2' },
+      { id: '3' },
+      { id: '4' },
+      { id: '5' },
+      { id: '6' }
+    ];
+  }
 }
 
 export default function ProductPage({ params }: { params: { id: string } }) {
   const [product, setProduct] = useState<Product | null>(null);
   const [error, setError] = useState<string | null>(null);
+  const [loading, setLoading] = useState(true);
   const [addedToCart, setAddedToCart] = useState(false);
   const { addToCart } = useCart();
 
   useEffect(() => {
     const load = async () => {
       try {
-        const res = await fetch(`/api/product/${params.id}`);
+        const res = await fetch(`https://crazydeal-api.railway.app/api/products/${params.id}`);
         if (!res.ok) throw new Error('Failed to fetch product');
         const data = await res.json();
         setProduct(data);
       } catch (e: any) {
-        setError(e?.message || 'Failed to load');
+        console.error("API Error:", e);
+        // Fallback to local data if API fails
+        const fallbackProducts: Record<string, Product> = {
+          '1': {
+            _id: '1',
+            name: 'Gaming Pro Mouse',
+            description: 'High-performance gaming mouse with RGB lighting and precision tracking',
+            price: 29.99,
+            images: ['https://via.placeholder.com/500x400/2563eb/ffffff?text=Gaming+Pro+Mouse']
+          },
+          '2': {
+            _id: '2',
+            name: 'Wireless Gaming Keyboard',
+            description: 'Mechanical wireless keyboard with RGB backlighting',
+            price: 49.99,
+            images: ['https://via.placeholder.com/500x400/7c3aed/ffffff?text=Gaming+Keyboard']
+          },
+          '3': {
+            _id: '3',
+            name: 'Gaming Headset',
+            description: '7.1 Surround Sound gaming headset with noise cancellation',
+            price: 39.99,
+            images: ['https://via.placeholder.com/500x400/dc2626/ffffff?text=Gaming+Headset']
+          },
+          '4': {
+            _id: '4',
+            name: 'Smartphone Pro Max',
+            description: 'Latest flagship smartphone with advanced camera system',
+            price: 899.99,
+            images: ['https://via.placeholder.com/500x400/059669/ffffff?text=Smartphone+Pro']
+          },
+          '5': {
+            _id: '5',
+            name: 'Laptop Gaming Beast',
+            description: 'High-performance gaming laptop with RTX graphics',
+            price: 1299.99,
+            images: ['https://via.placeholder.com/500x400/7c2d12/ffffff?text=Gaming+Laptop']
+          },
+          '6': {
+            _id: '6',
+            name: 'Wireless Earbuds',
+            description: 'Premium wireless earbuds with active noise cancellation',
+            price: 19.99,
+            images: ['https://via.placeholder.com/500x400/be185d/ffffff?text=Wireless+Earbuds']
+          }
+        };
+        
+        const fallbackProduct = fallbackProducts[params.id];
+        if (fallbackProduct) {
+          setProduct(fallbackProduct);
+          setError(null);
+        } else {
+          setError('Product not found');
+        }
+      } finally {
+        setLoading(false);
       }
     };
     load();
   }, [params.id]);
 
-  if (error) return <div style={{ color: 'red' }}>{error}</div>;
-  if (!product) return <div>Loading...</div>;
+  if (error) return (
+    <div style={{ 
+      textAlign: 'center', 
+      padding: '40px',
+      color: '#dc2626',
+      fontSize: '18px'
+    }}>
+      {error}
+    </div>
+  );
+  if (loading) return (
+    <div style={{ 
+      textAlign: 'center', 
+      padding: '40px',
+      fontSize: '18px',
+      color: '#6b7280'
+    }}>
+      Loading product...
+    </div>
+  );
+  if (!product) return (
+    <div style={{ 
+      textAlign: 'center', 
+      padding: '40px',
+      fontSize: '18px',
+      color: '#6b7280'
+    }}>
+      Product not found
+    </div>
+  );
 
   return (
     <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
