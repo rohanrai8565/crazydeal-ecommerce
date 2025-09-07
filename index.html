@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🛍️ CrazyDeal - E-Commerce Store</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            background-color: #fafafa;
+            color: #1a1a1a;
+        }
+        
+        .header {
+            padding: 16px 24px;
+            border-bottom: 1px solid #e5e7eb;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: white;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        
+        .logo {
+            font-weight: 800;
+            text-decoration: none;
+            color: #2563eb;
+            font-size: 24px;
+        }
+        
+        .nav {
+            display: flex;
+            gap: 24px;
+            align-items: center;
+        }
+        
+        .nav a {
+            text-decoration: none;
+            color: #374151;
+            font-weight: 500;
+            padding: 8px 16px;
+            border-radius: 8px;
+            transition: all 0.2s;
+        }
+        
+        .nav a:hover {
+            background-color: #f3f4f6;
+        }
+        
+        .main {
+            padding: 24px;
+            min-height: calc(100vh - 80px);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .hero {
+            text-align: center;
+            padding: 60px 20px;
+        }
+        
+        .hero h1 {
+            font-size: 48px;
+            font-weight: 800;
+            color: #1a1a1a;
+            margin-bottom: 16px;
+            background: linear-gradient(135deg, #2563eb, #7c3aed);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .hero p {
+            font-size: 20px;
+            color: #6b7280;
+            margin-bottom: 40px;
+            max-width: 600px;
+            margin: 0 auto 40px;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            padding: 16px 32px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 18px;
+            transition: all 0.2s;
+            display: inline-block;
+        }
+        
+        .btn-primary {
+            background-color: #2563eb;
+            color: white;
+            box-shadow: 0 4px 14px rgba(37, 99, 235, 0.3);
+        }
+        
+        .btn-secondary {
+            background-color: transparent;
+            color: #2563eb;
+            border: 2px solid #2563eb;
+        }
+        
+        .products {
+            margin-top: 60px;
+        }
+        
+        .products h2 {
+            font-size: 36px;
+            font-weight: 800;
+            color: #1a1a1a;
+            margin-bottom: 32px;
+            text-align: center;
+        }
+        
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 24px;
+        }
+        
+        .product-card {
+            background-color: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 16px;
+            padding: 0;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+            overflow: hidden;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            transition: all 0.2s;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+        
+        .product-image {
+            width: 100%;
+            height: 210px;
+            object-fit: cover;
+            background: linear-gradient(135deg, #f3f4f6, #e5e7eb);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 48px;
+        }
+        
+        .product-info {
+            padding: 20px;
+        }
+        
+        .product-name {
+            font-weight: 600;
+            font-size: 18px;
+            margin-bottom: 8px;
+            color: #1a1a1a;
+        }
+        
+        .product-price {
+            font-size: 24px;
+            font-weight: 700;
+            color: #2563eb;
+        }
+        
+        .footer {
+            background-color: #1a1a1a;
+            color: white;
+            text-align: center;
+            padding: 40px 20px;
+            margin-top: 60px;
+        }
+        
+        .footer p {
+            margin-bottom: 16px;
+        }
+        
+        .footer a {
+            color: #2563eb;
+            text-decoration: none;
+        }
+        
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 36px;
+            }
+            
+            .hero p {
+                font-size: 18px;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .nav {
+                gap: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <a href="#" class="logo">🛍️ CrazyDeal</a>
+        <nav class="nav">
+            <a href="#products">Products</a>
+            <a href="#cart">Cart</a>
+            <a href="#login">Login</a>
+        </nav>
+    </header>
+
+    <main class="main">
+        <div class="container">
+            <section class="hero">
+                <h1>Welcome to CrazyDeal Store</h1>
+                <p>Discover amazing products at unbeatable prices. Shop with confidence and enjoy fast, secure delivery.</p>
+                <div class="cta-buttons">
+                    <a href="#products" class="btn btn-primary">Shop Now</a>
+                    <a href="#login" class="btn btn-secondary">Sign In</a>
+                </div>
+            </section>
+
+            <section class="products" id="products">
+                <h2>Our Products</h2>
+                <div class="product-grid">
+                    <div class="product-card">
+                        <div class="product-image">🖱️</div>
+                        <div class="product-info">
+                            <div class="product-name">Gaming Pro Mouse</div>
+                            <div class="product-price">₹2,999</div>
+                        </div>
+                    </div>
+                    
+                    <div class="product-card">
+                        <div class="product-image">⌨️</div>
+                        <div class="product-info">
+                            <div class="product-name">Wireless Gaming Keyboard</div>
+                            <div class="product-price">₹4,999</div>
+                        </div>
+                    </div>
+                    
+                    <div class="product-card">
+                        <div class="product-image">🎧</div>
+                        <div class="product-info">
+                            <div class="product-name">Gaming Headset</div>
+                            <div class="product-price">₹3,999</div>
+                        </div>
+                    </div>
+                    
+                    <div class="product-card">
+                        <div class="product-image">📱</div>
+                        <div class="product-info">
+                            <div class="product-name">Smartphone Pro Max</div>
+                            <div class="product-price">₹89,999</div>
+                        </div>
+                    </div>
+                    
+                    <div class="product-card">
+                        <div class="product-image">💻</div>
+                        <div class="product-info">
+                            <div class="product-name">Laptop Gaming Beast</div>
+                            <div class="product-price">₹1,29,999</div>
+                        </div>
+                    </div>
+                    
+                    <div class="product-card">
+                        <div class="product-image">🎵</div>
+                        <div class="product-info">
+                            <div class="product-name">Wireless Earbuds</div>
+                            <div class="product-price">₹1,999</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <p>© 2025 CrazyDeal Store. All rights reserved.</p>
+        <p>Built with ❤️ by <a href="https://github.com/rohanrai8565">Rohan Rai</a></p>
+        <p>Visit our <a href="https://github.com/rohanrai8565/crazydeal-ecommerce">GitHub Repository</a></p>
+    </footer>
+
+    <script>
+        // Simple cart functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const cartItems = [];
+            
+            // Add to cart functionality
+            document.querySelectorAll('.product-card').forEach(card => {
+                card.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const productName = this.querySelector('.product-name').textContent;
+                    const productPrice = this.querySelector('.product-price').textContent;
+                    
+                    cartItems.push({ name: productName, price: productPrice });
+                    
+                    // Show notification
+                    const notification = document.createElement('div');
+                    notification.style.cssText = `
+                        position: fixed;
+                        top: 20px;
+                        right: 20px;
+                        background: #059669;
+                        color: white;
+                        padding: 12px 20px;
+                        border-radius: 8px;
+                        z-index: 1000;
+                        font-weight: 600;
+                    `;
+                    notification.textContent = `${productName} added to cart!`;
+                    document.body.appendChild(notification);
+                    
+                    setTimeout(() => {
+                        notification.remove();
+                    }, 3000);
+                });
+            });
+        });
+    </script>
+</body>
+</html>
