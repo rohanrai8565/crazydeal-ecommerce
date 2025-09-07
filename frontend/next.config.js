@@ -2,6 +2,9 @@
 const nextConfig = {
   output: 'export',
   trailingSlash: true,
+  distDir: 'out',
+  assetPrefix: process.env.NODE_ENV === 'production' ? '/crazydeal-ecommerce' : '',
+  basePath: process.env.NODE_ENV === 'production' ? '/crazydeal-ecommerce' : '',
   images: {
     unoptimized: true,
     remotePatterns: [

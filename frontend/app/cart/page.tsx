@@ -5,61 +5,6 @@ import Link from 'next/link';
 export default function CartPage() {
   const { cartItems, removeFromCart, updateQuantity, getTotalPrice, clearCart } = useCart();
 
-  const handlePayment = async () => {
-    try {
-      // Create payment order
-      const response = await fetch('/api/payment/create-order', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ amount: getTotalPrice() })
-      });
-      
-      const { orderId } = await response.json();
-      
-      // Load Razorpay script
-      const script = document.createElement('script');
-      script.src = 'https://checkout.razorpay.com/v1/checkout.js';
-      script.onload = () => {
-        const options = {
-          key: 'rzp_test_1234567890', // Replace with your Razorpay key
-          amount: getTotalPrice() * 100,
-          currency: 'INR',
-          name: 'CrazyDeal Store',
-          description: 'Payment for your order',
-          order_id: orderId,
-          handler: async (response) => {
-            // Verify payment
-            const verifyResponse = await fetch('/api/payment/verify-payment', {
-              method: 'POST',
-              headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify({
-                orderId: response.razorpay_order_id,
-                paymentId: response.razorpay_payment_id,
-                signature: response.razorpay_signature
-              })
-            });
-            
-            const result = await verifyResponse.json();
-            if (result.success) {
-              alert('Payment successful!');
-              clearCart();
-            } else {
-              alert('Payment verification failed!');
-            }
-          },
-          theme: { color: '#2563eb' }
-        };
-        
-        const rzp = new (window as any).Razorpay(options);
-        rzp.open();
-      };
-      document.head.appendChild(script);
-    } catch (error) {
-      console.error('Payment failed:', error);
-      alert('Payment failed!');
-    }
-  };
-
   if (cartItems.length === 0) {
     return (
       <div style={{ 
@@ -266,23 +211,21 @@ export default function CartPage() {
             </div>
           </div>
           
-          <button 
-            onClick={handlePayment}
-            style={{
-              backgroundColor: '#2563eb',
-              color: 'white',
-              border: 'none',
-              borderRadius: '12px',
-              padding: '16px',
-              fontSize: '18px',
-              fontWeight: 600,
-              cursor: 'pointer',
-              width: '100%',
-              marginBottom: '12px',
-              boxShadow: '0 4px 14px rgba(37, 99, 235, 0.3)',
-              transition: 'all 0.2s'
-            }}>
-            Pay with Razorpay
+          <button style={{
+            backgroundColor: '#2563eb',
+            color: 'white',
+            border: 'none',
+            borderRadius: '12px',
+            padding: '16px',
+            fontSize: '18px',
+            fontWeight: 600,
+            cursor: 'pointer',
+            width: '100%',
+            marginBottom: '12px',
+            boxShadow: '0 4px 14px rgba(37, 99, 235, 0.3)',
+            transition: 'all 0.2s'
+          }}>
+            Proceed to Checkout
           </button>
           
           <button 
