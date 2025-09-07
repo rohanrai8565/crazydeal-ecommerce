@@ -2,6 +2,7 @@
   "name": "ecommerce-frontend",
   "version": "1.0.0",
   "private": true,
+  "homepage": "https://rohanrai8565.github.io/crazydeal-ecommerce",
   "scripts": {
     "dev": "next dev -p 3000",
     "build": "next build",
