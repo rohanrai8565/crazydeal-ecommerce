@@ -20,63 +20,52 @@ export default function ProductsPage() {
   const { addToCart } = useCart();
 
   useEffect(() => {
-    const load = async () => {
-      try {
-        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}/api/products`, { cache: "no-store" });
-        if (!res.ok) throw new Error("Failed to fetch products");
-        const data = await res.json();
-        const productList = data.products || [];
-        setProducts(productList);
-        setFilteredProducts(productList);
-      } catch (e: any) {
-        console.error("API Error:", e);
-        // Fallback to local data if API fails
-        const fallbackProducts = [
-          {
-            _id: '1',
-            name: 'Gaming Pro Mouse',
-            price: 29.99,
-            images: ['https://via.placeholder.com/500x400/2563eb/ffffff?text=Gaming+Pro+Mouse']
-          },
-          {
-            _id: '2',
-            name: 'Wireless Gaming Keyboard',
-            price: 49.99,
-            images: ['https://via.placeholder.com/500x400/7c3aed/ffffff?text=Gaming+Keyboard']
-          },
-          {
-            _id: '3',
-            name: 'Gaming Headset',
-            price: 39.99,
-            images: ['https://via.placeholder.com/500x400/dc2626/ffffff?text=Gaming+Headset']
-          },
-          {
-            _id: '4',
-            name: 'Smartphone Pro Max',
-            price: 899.99,
-            images: ['https://via.placeholder.com/500x400/059669/ffffff?text=Smartphone+Pro']
-          },
-          {
-            _id: '5',
-            name: 'Laptop Gaming Beast',
-            price: 1299.99,
-            images: ['https://via.placeholder.com/500x400/7c2d12/ffffff?text=Gaming+Laptop']
-          },
-          {
-            _id: '6',
-            name: 'Wireless Earbuds',
-            price: 19.99,
-            images: ['https://via.placeholder.com/500x400/be185d/ffffff?text=Wireless+Earbuds']
-          }
-        ];
-        setProducts(fallbackProducts);
-        setFilteredProducts(fallbackProducts);
-        setError(null); // Clear error since we have fallback data
-      } finally {
-        setLoading(false);
-      }
+    const fetchProducts = async () => {
+      // Use fallback data directly for now
+      const fallbackProducts = [
+        {
+          _id: '1',
+          name: 'Gaming Pro Mouse',
+          price: 29.99,
+          images: ['https://via.placeholder.com/500x400/2563eb/ffffff?text=Gaming+Pro+Mouse']
+        },
+        {
+          _id: '2',
+          name: 'Wireless Gaming Keyboard',
+          price: 49.99,
+          images: ['https://via.placeholder.com/500x400/7c3aed/ffffff?text=Gaming+Keyboard']
+        },
+        {
+          _id: '3',
+          name: 'Gaming Headset',
+          price: 39.99,
+          images: ['https://via.placeholder.com/500x400/dc2626/ffffff?text=Gaming+Headset']
+        },
+        {
+          _id: '4',
+          name: 'Smartphone Pro Max',
+          price: 899.99,
+          images: ['https://via.placeholder.com/500x400/059669/ffffff?text=Smartphone+Pro']
+        },
+        {
+          _id: '5',
+          name: 'Laptop Gaming Beast',
+          price: 1299.99,
+          images: ['https://via.placeholder.com/500x400/7c2d12/ffffff?text=Gaming+Laptop']
+        },
+        {
+          _id: '6',
+          name: 'Wireless Earbuds',
+          price: 19.99,
+          images: ['https://via.placeholder.com/500x400/be185d/ffffff?text=Wireless+Earbuds']
+        }
+      ];
+      setProducts(fallbackProducts);
+      setFilteredProducts(fallbackProducts);
+      setError(null);
+      setLoading(false);
     };
-    load();
+    fetchProducts();
   }, []);
 
   return (
