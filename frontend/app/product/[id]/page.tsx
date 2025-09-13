@@ -11,26 +11,6 @@ type Product = {
   images?: string[];
 };
 
-export async function generateStaticParams() {
-  // Fetch products from backend to generate static params
-  try {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}/api/products`);
-    const data = await res.json();
-    return data.products.map((product: any) => ({
-      id: product._id,
-    }));
-  } catch (error) {
-    // Fallback to hardcoded IDs if API fails
-    return [
-      { id: '1' },
-      { id: '2' },
-      { id: '3' },
-      { id: '4' },
-      { id: '5' },
-      { id: '6' }
-    ];
-  }
-}
 
 export default function ProductPage({ params }: { params: { id: string } }) {
   const [product, setProduct] = useState<Product | null>(null);
