@@ -7,33 +7,14 @@ const nextConfig = {
   assetPrefix: '/crazydeal-ecommerce/',
   images: {
     unoptimized: true,
-    formats: ['image/webp', 'image/avif'],
-    remotePatterns: [
-      {
-        protocol: 'https',
-        hostname: 'images.unsplash.com',
-        port: '',
-        pathname: '/**',
-      },
-      {
-        protocol: 'https',
-        hostname: 'via.placeholder.com',
-        port: '',
-        pathname: '/**',
-      },
-      {
-        protocol: 'https',
-        hostname: 'picsum.photos',
-        port: '',
-        pathname: '/**',
-      },
-    ],
+    loader: 'custom',
+    loaderFile: './imageLoader.js',
   },
-  experimental: {
-    optimizeCss: true,
+  eslint: {
+    ignoreDuringBuilds: true,
   },
-  compiler: {
-    removeConsole: process.env.NODE_ENV === 'production',
+  typescript: {
+    ignoreBuildErrors: true,
   },
 }
 

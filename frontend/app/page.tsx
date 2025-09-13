@@ -27,7 +27,7 @@ export default function HomePage() {
         Discover amazing products at unbeatable prices. Shop with confidence and enjoy fast, secure delivery.
       </p>
       <div style={{ display: 'flex', gap: '16px', justifyContent: 'center', flexWrap: 'wrap' }}>
-        <a href="/products" style={{
+        <a href="/crazydeal-ecommerce/products/" style={{
           backgroundColor: '#2563eb',
           color: 'white',
           padding: '16px 32px',
@@ -40,7 +40,7 @@ export default function HomePage() {
         }}>
           Shop Now
         </a>
-        <a href="/login" style={{
+        <a href="/crazydeal-ecommerce/login/" style={{
           backgroundColor: 'transparent',
           color: '#2563eb',
           padding: '16px 32px',
