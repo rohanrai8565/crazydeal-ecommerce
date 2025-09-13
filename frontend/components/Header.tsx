@@ -18,7 +18,7 @@ const Header: React.FC = () => {
     localStorage.removeItem('token');
     setIsLoggedIn(false);
     setShowUserMenu(false);
-    window.location.href = '/crazydeal-ecommerce/';
+    window.location.href = '/';
   };
 
   const cartItemCount = cartItems.reduce((total, item) => total + item.quantity, 0);
