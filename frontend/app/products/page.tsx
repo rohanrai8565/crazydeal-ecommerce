@@ -1,9 +1,9 @@
 "use client";
-
-import Link from "next/link";
-import Image from "next/image";
-import { useEffect, useState } from "react";
-import SearchBar from "../../components/SearchBar";
+import { useState, useEffect } from 'react';
+import SearchBar from '../../components/SearchBar';
+import CategoryFilter from '../../components/CategoryFilter';
+import ProductCard from '../../components/ProductCard';
+import { useCart } from '../context/CartContext';
 
 type Product = {
   _id: string;
@@ -17,6 +17,7 @@ export default function ProductsPage() {
   const [filteredProducts, setFilteredProducts] = useState<Product[]>([]);
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
+  const { addToCart } = useCart();
 
   useEffect(() => {
     const load = async () => {
@@ -96,6 +97,11 @@ export default function ProductsPage() {
             if (!query.trim()) {
               setFilteredProducts(products);
             } else {
+              const handleAddToCart = (product: Product) => {
+                console.log('Adding to cart:', product);
+                addToCart(product);
+                alert(`Added ${product.name} to cart!`);
+              };
               const filtered = products.filter(product => 
                 product.name.toLowerCase().includes(query.toLowerCase())
               );
@@ -134,70 +140,12 @@ export default function ProductsPage() {
           gap: 24,
         }}
       >
-        {filteredProducts.map((p) => (
-          <Link
-            key={p._id}
-            href={`/product/${p._id}`}
-            style={{
-              backgroundColor: "white",
-              border: "1px solid #e5e7eb",
-              borderRadius: "16px",
-              padding: "0",
-              textDecoration: "none",
-              color: "inherit",
-              display: "block",
-              overflow: "hidden",
-              boxShadow: "0 1px 3px rgba(0,0,0,0.1)",
-              transition: "all 0.2s",
-              cursor: "pointer"
-            }}
-          >
-            {p.images?.[0] ? (
-              <img
-                src={p.images[0]}
-                alt={p.name}
-                style={{ 
-                  width: "100%", 
-                  height: "210px", 
-                  objectFit: "cover" 
-                }}
-                onError={(e) => {
-                  e.currentTarget.style.display = 'none';
-                  const nextEl = e.currentTarget.nextElementSibling as HTMLElement;
-                  if (nextEl) nextEl.style.display = 'flex';
-                }}
-              />
-            ) : null}
-            <div
-              style={{
-                height: "210px",
-                background: "linear-gradient(135deg, #f3f4f6, #e5e7eb)",
-                display: p.images?.[0] ? "none" : "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                fontSize: "48px"
-              }}
-            >
-              📦
-            </div>
-            <div style={{ padding: "20px" }}>
-              <div style={{ 
-                fontWeight: 600, 
-                fontSize: "18px",
-                marginBottom: "8px",
-                color: "#1a1a1a"
-              }}>
-                {p.name}
-              </div>
-              <div style={{ 
-                fontSize: "24px", 
-                fontWeight: 700,
-                color: "#2563eb"
-              }}>
-                ${p.price.toFixed(2)}
-              </div>
-            </div>
-          </Link>
+        {filteredProducts.map((product) => (
+          <ProductCard
+            key={product._id}
+            product={product}
+            onAddToCart={addToCart}
+          />
         ))}
       </div>
     </div>
