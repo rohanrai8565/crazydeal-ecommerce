@@ -213,9 +213,8 @@ export default function CartPage() {
           
           <button 
             onClick={() => {
-              // Simple checkout - redirect to a success page
-              alert(`Order placed! Total: $${getTotalPrice().toFixed(2)}`);
-              clearCart();
+              // Integrate with Razorpay payment
+              window.location.href = `/checkout?amount=${getTotalPrice()}`;
             }}
             style={{
             backgroundColor: '#2563eb',

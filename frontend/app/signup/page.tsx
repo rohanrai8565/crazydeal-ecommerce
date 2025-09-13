@@ -2,24 +2,45 @@
 import { useState } from 'react';
 import Link from 'next/link';
 
-export default function LoginPage() {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+export default function SignupPage() {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    password: '',
+    confirmPassword: ''
+  });
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    });
+  };
 
   const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError(null);
+
+    if (formData.password !== formData.confirmPassword) {
+      setError('Passwords do not match');
+      return;
+    }
+
     setLoading(true);
     try {
-      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/auth/login`, {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/auth/signup`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, password }),
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          password: formData.password
+        }),
       });
       const data = await res.json();
-      if (!res.ok) throw new Error(data?.message || 'Login failed');
+      if (!res.ok) throw new Error(data?.message || 'Signup failed');
       localStorage.setItem('token', data.token);
       window.location.href = '/products';
     } catch (err: any) {
@@ -45,14 +66,31 @@ export default function LoginPage() {
         textAlign: 'center',
         marginBottom: '32px'
       }}>
-        Welcome Back
+        Create Account
       </h1>
       <form onSubmit={onSubmit} style={{ display: 'grid', gap: '20px' }}>
         <input 
+          type="text" 
+          name="name"
+          placeholder="Full Name" 
+          value={formData.name} 
+          onChange={handleChange} 
+          required 
+          style={{
+            padding: '16px',
+            borderRadius: '12px',
+            border: '2px solid #e5e7eb',
+            fontSize: '16px',
+            outline: 'none',
+            transition: 'border-color 0.2s'
+          }}
+        />
+        <input 
           type="email" 
+          name="email"
           placeholder="Email address" 
-          value={email} 
-          onChange={(e) => setEmail(e.target.value)} 
+          value={formData.email} 
+          onChange={handleChange} 
           required 
           style={{
             padding: '16px',
@@ -65,9 +103,26 @@ export default function LoginPage() {
         />
         <input 
           type="password" 
+          name="password"
           placeholder="Password" 
-          value={password} 
-          onChange={(e) => setPassword(e.target.value)} 
+          value={formData.password} 
+          onChange={handleChange} 
+          required 
+          style={{
+            padding: '16px',
+            borderRadius: '12px',
+            border: '2px solid #e5e7eb',
+            fontSize: '16px',
+            outline: 'none',
+            transition: 'border-color 0.2s'
+          }}
+        />
+        <input 
+          type="password" 
+          name="confirmPassword"
+          placeholder="Confirm Password" 
+          value={formData.confirmPassword} 
+          onChange={handleChange} 
           required 
           style={{
             padding: '16px',
@@ -93,7 +148,7 @@ export default function LoginPage() {
             transition: 'all 0.2s'
           }}
         >
-          {loading ? 'Signing in...' : 'Sign In'}
+          {loading ? 'Creating Account...' : 'Create Account'}
         </button>
         {error && (
           <div style={{ 
@@ -108,14 +163,12 @@ export default function LoginPage() {
           </div>
         )}
         <div style={{ textAlign: 'center', marginTop: '16px' }}>
-          <span style={{ color: '#6b7280' }}>Don't have an account? </span>
-          <Link href="/signup" style={{ color: '#2563eb', textDecoration: 'none', fontWeight: 600 }}>
-            Sign Up
+          <span style={{ color: '#6b7280' }}>Already have an account? </span>
+          <Link href="/login" style={{ color: '#2563eb', textDecoration: 'none', fontWeight: 600 }}>
+            Sign In
           </Link>
         </div>
       </form>
     </div>
   );
 }
-
-

@@ -1,5 +1,7 @@
 import { CartProvider } from './context/CartContext';
-import CartIcon from './components/CartIcon';
+import Header from '../components/Header';
+import Footer from '../components/Footer';
+import '../styles/globals.css';
 
 export const metadata = {
   title: 'CrazyDeal Store',
@@ -16,45 +18,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         color: '#1a1a1a'
       }}>
         <CartProvider>
-          <header style={{ 
-            padding: '16px 24px', 
-            borderBottom: '1px solid #e5e7eb', 
-            display: 'flex', 
-            justifyContent: 'space-between',
-            alignItems: 'center',
-            backgroundColor: 'white',
-            boxShadow: '0 1px 3px rgba(0,0,0,0.1)'
-          }}>
-            <a href="/" style={{ 
-              fontWeight: 800, 
-              textDecoration: 'none', 
-              color: '#2563eb',
-              fontSize: '24px'
-            }}>🛍️ CrazyDeal</a>
-            <nav style={{ display: 'flex', gap: 24, alignItems: 'center' }}>
-              <a href="/products" style={{ 
-                textDecoration: 'none', 
-                color: '#374151',
-                fontWeight: 500,
-                padding: '8px 16px',
-                borderRadius: '8px',
-                transition: 'all 0.2s'
-              }}>Products</a>
-              <CartIcon />
-              <a href="/login" style={{ 
-                textDecoration: 'none', 
-                color: '#2563eb',
-                fontWeight: 500,
-                padding: '8px 16px',
-                borderRadius: '8px',
-                border: '1px solid #2563eb',
-                transition: 'all 0.2s'
-              }}>Login</a>
-            </nav>
-          </header>
-          <main style={{ padding: '24px', minHeight: 'calc(100vh - 80px)' }}>
+          <Header />
+          <main style={{ padding: '24px', minHeight: 'calc(100vh - 200px)' }}>
             {children}
           </main>
+          <Footer />
         </CartProvider>
       </body>
     </html>

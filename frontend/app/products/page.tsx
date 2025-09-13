@@ -3,6 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useEffect, useState } from "react";
+import SearchBar from "../../components/SearchBar";
 
 type Product = {
   _id: string;
@@ -13,16 +14,19 @@ type Product = {
 
 export default function ProductsPage() {
   const [products, setProducts] = useState<Product[]>([]);
+  const [filteredProducts, setFilteredProducts] = useState<Product[]>([]);
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const load = async () => {
       try {
-        const res = await fetch("https://crazydeal-api.railway.app/api/products", { cache: "no-store" });
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}/api/products`, { cache: "no-store" });
         if (!res.ok) throw new Error("Failed to fetch products");
         const data = await res.json();
-        setProducts(data.products || []);
+        const productList = data.products || [];
+        setProducts(productList);
+        setFilteredProducts(productList);
       } catch (e: any) {
         console.error("API Error:", e);
         // Fallback to local data if API fails
@@ -65,6 +69,7 @@ export default function ProductsPage() {
           }
         ];
         setProducts(fallbackProducts);
+        setFilteredProducts(fallbackProducts);
         setError(null); // Clear error since we have fallback data
       } finally {
         setLoading(false);
@@ -84,6 +89,22 @@ export default function ProductsPage() {
       }}>
         Our Products
       </h1>
+      
+      <div style={{ marginBottom: '32px' }}>
+        <SearchBar 
+          onSearch={(query) => {
+            if (!query.trim()) {
+              setFilteredProducts(products);
+            } else {
+              const filtered = products.filter(product => 
+                product.name.toLowerCase().includes(query.toLowerCase())
+              );
+              setFilteredProducts(filtered);
+            }
+          }}
+          placeholder="Search products..."
+        />
+      </div>
       {loading && (
         <div style={{ 
           textAlign: 'center', 
@@ -113,7 +134,7 @@ export default function ProductsPage() {
           gap: 24,
         }}
       >
-        {products.map((p) => (
+        {filteredProducts.map((p) => (
           <Link
             key={p._id}
             href={`/product/${p._id}`}
@@ -142,7 +163,8 @@ export default function ProductsPage() {
                 }}
                 onError={(e) => {
                   e.currentTarget.style.display = 'none';
-                  e.currentTarget.nextElementSibling.style.display = 'flex';
+                  const nextEl = e.currentTarget.nextElementSibling as HTMLElement;
+                  if (nextEl) nextEl.style.display = 'flex';
                 }}
               />
             ) : null}

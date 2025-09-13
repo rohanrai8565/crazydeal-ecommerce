@@ -1,3 +1,5 @@
+'use client';
+
 import { useEffect, useState } from 'react';
 import { useCart } from '../../context/CartContext';
 
@@ -12,7 +14,7 @@ type Product = {
 export async function generateStaticParams() {
   // Fetch products from backend to generate static params
   try {
-    const res = await fetch('https://crazydeal-api.railway.app/api/products');
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}/api/products`);
     const data = await res.json();
     return data.products.map((product: any) => ({
       id: product._id,
@@ -40,7 +42,7 @@ export default function ProductPage({ params }: { params: { id: string } }) {
   useEffect(() => {
     const load = async () => {
       try {
-        const res = await fetch(`https://crazydeal-api.railway.app/api/products/${params.id}`);
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}/api/products/${params.id}`);
         if (!res.ok) throw new Error('Failed to fetch product');
         const data = await res.json();
         setProduct(data);
