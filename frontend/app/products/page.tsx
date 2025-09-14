@@ -27,37 +27,73 @@ export default function ProductsPage() {
           _id: '1',
           name: 'Gaming Pro Mouse',
           price: 29.99,
-          images: ['https://via.placeholder.com/500x400/2563eb/ffffff?text=Gaming+Pro+Mouse']
+          images: ['https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?w=500&h=400&fit=crop']
         },
         {
           _id: '2',
           name: 'Wireless Gaming Keyboard',
           price: 49.99,
-          images: ['https://via.placeholder.com/500x400/7c3aed/ffffff?text=Gaming+Keyboard']
+          images: ['https://images.unsplash.com/photo-1541140532154-b024d705b90a?w=500&h=400&fit=crop']
         },
         {
           _id: '3',
           name: 'Gaming Headset',
           price: 39.99,
-          images: ['https://via.placeholder.com/500x400/dc2626/ffffff?text=Gaming+Headset']
+          images: ['https://images.unsplash.com/photo-1484704849700-f032a568e944?w=500&h=400&fit=crop']
         },
         {
           _id: '4',
           name: 'Smartphone Pro Max',
           price: 899.99,
-          images: ['https://via.placeholder.com/500x400/059669/ffffff?text=Smartphone+Pro']
+          images: ['https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=500&h=400&fit=crop']
         },
         {
           _id: '5',
-          name: 'Laptop Gaming Beast',
+          name: 'Gaming Laptop',
           price: 1299.99,
-          images: ['https://via.placeholder.com/500x400/7c2d12/ffffff?text=Gaming+Laptop']
+          images: ['https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=500&h=400&fit=crop']
         },
         {
           _id: '6',
           name: 'Wireless Earbuds',
           price: 19.99,
-          images: ['https://via.placeholder.com/500x400/be185d/ffffff?text=Wireless+Earbuds']
+          images: ['https://images.unsplash.com/photo-1590658268037-6bf12165a8df?w=500&h=400&fit=crop']
+        },
+        {
+          _id: '7',
+          name: 'Smart Watch',
+          price: 199.99,
+          images: ['https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=500&h=400&fit=crop']
+        },
+        {
+          _id: '8',
+          name: 'Bluetooth Speaker',
+          price: 79.99,
+          images: ['https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?w=500&h=400&fit=crop']
+        },
+        {
+          _id: '9',
+          name: 'Tablet Pro',
+          price: 649.99,
+          images: ['https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?w=500&h=400&fit=crop']
+        },
+        {
+          _id: '10',
+          name: 'Webcam HD',
+          price: 89.99,
+          images: ['https://images.unsplash.com/photo-1587825140708-dfaf72ae4b04?w=500&h=400&fit=crop']
+        },
+        {
+          _id: '11',
+          name: 'Mechanical Keyboard RGB',
+          price: 129.99,
+          images: ['https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=500&h=400&fit=crop']
+        },
+        {
+          _id: '12',
+          name: 'Monitor 4K Ultra',
+          price: 399.99,
+          images: ['https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=500&h=400&fit=crop']
         }
       ];
       setProducts(fallbackProducts);
@@ -69,12 +105,12 @@ export default function ProductsPage() {
   }, []);
 
   return (
-    <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
+    <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 16px' }}>
       <h1 style={{ 
-        fontSize: '36px', 
+        fontSize: 'clamp(24px, 5vw, 36px)', 
         fontWeight: 800, 
         color: '#1a1a1a',
-        marginBottom: '32px',
+        marginBottom: '24px',
         textAlign: 'center'
       }}>
         Our Products
@@ -86,11 +122,6 @@ export default function ProductsPage() {
             if (!query.trim()) {
               setFilteredProducts(products);
             } else {
-              const handleAddToCart = (product: Product) => {
-                console.log('Adding to cart:', product);
-                addToCart(product);
-                alert(`Added ${product.name} to cart!`);
-              };
               const filtered = products.filter(product => 
                 product.name.toLowerCase().includes(query.toLowerCase())
               );
@@ -124,16 +155,21 @@ export default function ProductsPage() {
       )}
       <div
         style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))",
-          gap: 24,
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fill, minmax(250px, 1fr))',
+          gap: 'clamp(16px, 3vw, 24px)',
+          marginTop: '24px'
         }}
       >
         {filteredProducts.map((product) => (
           <ProductCard
             key={product._id}
             product={product}
-            onAddToCart={addToCart}
+            onAddToCart={(product) => {
+              console.log('Adding to cart:', product);
+              addToCart(product);
+              alert(`Added ${product.name} to cart!`);
+            }}
           />
         ))}
       </div>

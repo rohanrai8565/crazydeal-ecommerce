@@ -214,7 +214,9 @@ export default function CartPage() {
           <button 
             onClick={() => {
               // Integrate with Razorpay payment
-              window.location.href = `/checkout?amount=${getTotalPrice()}`;
+              if (typeof window !== 'undefined') {
+                window.location.href = `/checkout?amount=${getTotalPrice()}`;
+              }
             }}
             style={{
             backgroundColor: '#2563eb',

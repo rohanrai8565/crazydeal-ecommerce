@@ -216,7 +216,9 @@ export default function ProductPage({ params }: { params: { id: string } }) {
                     price: product.price,
                     images: product.images
                   });
-                  window.location.href = '/cart';
+                  if (typeof window !== 'undefined') {
+                    window.location.href = '/cart';
+                  }
                 }
               }}
               style={{ 

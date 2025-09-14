@@ -19,7 +19,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       }}>
         <CartProvider>
           <Header />
-          <main style={{ padding: '24px', minHeight: 'calc(100vh - 200px)' }}>
+          <main style={{ padding: 'clamp(16px, 4vw, 24px)', minHeight: 'calc(100vh - 200px)' }}>
             {children}
           </main>
           <Footer />

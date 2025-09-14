@@ -10,15 +10,19 @@ const Header: React.FC = () => {
   const [showUserMenu, setShowUserMenu] = useState(false);
 
   useEffect(() => {
-    const token = localStorage.getItem('token');
-    setIsLoggedIn(!!token);
+    if (typeof window !== 'undefined') {
+      const token = localStorage.getItem('token');
+      setIsLoggedIn(!!token);
+    }
   }, []);
 
   const handleLogout = () => {
-    localStorage.removeItem('token');
-    setIsLoggedIn(false);
-    setShowUserMenu(false);
-    window.location.href = '/';
+    if (typeof window !== 'undefined') {
+      localStorage.removeItem('token');
+      setIsLoggedIn(false);
+      setShowUserMenu(false);
+      window.location.href = '/';
+    }
   };
 
   const cartItemCount = cartItems.reduce((total, item) => total + item.quantity, 0);
@@ -29,7 +33,8 @@ const Header: React.FC = () => {
       borderBottom: '1px solid #e5e7eb',
       position: 'sticky',
       top: 0,
-      zIndex: 50,
+      zIndex: 1000,
+      padding: 'clamp(12px, 3vw, 16px) clamp(16px, 4vw, 24px)',
       boxShadow: '0 1px 3px rgba(0,0,0,0.1)'
     }}>
       <div style={{

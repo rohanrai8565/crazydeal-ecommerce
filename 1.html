@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Time Table | vtucode</title>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        table { width: 80%; margin: 20px auto; border-collapse: collapse; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: center; }
+        th { background-color: #f4f4f4; color: #333; }
+        tr:nth-child(even) { background-color: #f9f9f9; }
+        tr:nth-child(odd) { background-color: #e6f7ff; }
+        .lab-hour { background-color: #ffcccc; }
+        .elective-hour { background-color: #ccffcc; }
+        .highlight { font-weight: bold; color: #d63384; }
+        tfoot { background-color: #e0e0e0; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <h1 style="text-align: center;">Time Table</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Day/Time</th>
+                {% for time in time_slots %}
+                    {% if loop.index == 5 %}
+                        <th>Lunch Break</th>
+                    {% endif %}
+                    <th>{{ time }}</th>
+                {% endfor %}
+            </tr>
+        </thead>
+        <tbody>
+            {% for day_schedule in schedule %}
+            <tr>
+                <td>{{ day_schedule.day }}</td>
+                {% for slot in day_schedule.slots %}
+                    {# Insert the lunch break cell after the 4th period on Monday #}
+                    {% if loop.first and loop.index == 5 %}
+                        <td rowspan="5" class="highlight">Break</td>
+                    {% endif %}
+
+                    {# Check if the slot is a dictionary (special class) or a simple string #}
+                    {% if slot is mapping %}
+                        <td class="{{ slot.type }}">{{ slot.class }}</td>
+                    {% else %}
+                        <td>{{ slot }}</td>
+                    {% endif %}
+                {% endfor %}
+            </tr>
+            {% endfor %}
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="8">End of Timetable</td>
+            </tr>
+        </tfoot>
+    </table>
+</body>
+</html>
