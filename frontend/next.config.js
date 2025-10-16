@@ -1,6 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   output: 'export',
+  basePath: '/crazydeal-ecommerce',
   trailingSlash: true,
   distDir: 'out',
   images: {
