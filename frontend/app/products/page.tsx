@@ -28,73 +28,73 @@ export default function ProductsPage() {
           _id: '1',
           name: 'Gaming Pro Mouse',
           price: 29.99,
-          images: ['https://via.placeholder.com/400x300/2563eb/ffffff?text=Gaming+Mouse']
+          images: ['https://images.unsplash.com/photo-1527814050087-3793815479db?w=400&h=300&fit=crop']
         },
         {
           _id: '2',
           name: 'Wireless Gaming Keyboard',
           price: 49.99,
-          images: ['https://via.placeholder.com/400x300/7c3aed/ffffff?text=Gaming+Keyboard']
+          images: ['https://images.unsplash.com/photo-1587829191301-26e5b2800f12?w=400&h=300&fit=crop']
         },
         {
           _id: '3',
           name: 'Gaming Headset',
           price: 39.99,
-          images: ['https://via.placeholder.com/400x300/dc2626/ffffff?text=Gaming+Headset']
+          images: ['https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400&h=300&fit=crop']
         },
         {
           _id: '4',
           name: 'Smartphone Pro Max',
           price: 899.99,
-          images: ['https://via.placeholder.com/400x300/059669/ffffff?text=Smartphone+Pro']
+          images: ['https://images.unsplash.com/photo-1511707267537-b85faf00021e?w=400&h=300&fit=crop']
         },
         {
           _id: '5',
           name: 'Gaming Laptop',
           price: 1299.99,
-          images: ['https://via.placeholder.com/400x300/7c2d12/ffffff?text=Gaming+Laptop']
+          images: ['https://images.unsplash.com/photo-1588872657840-790ff3bde08c?w=400&h=300&fit=crop']
         },
         {
           _id: '6',
           name: 'Wireless Earbuds',
           price: 19.99,
-          images: ['https://via.placeholder.com/400x300/be185d/ffffff?text=Wireless+Earbuds']
+          images: ['https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400&h=300&fit=crop']
         },
         {
           _id: '7',
           name: 'Smart Watch',
           price: 199.99,
-          images: ['https://via.placeholder.com/400x300/0891b2/ffffff?text=Smart+Watch']
+          images: ['https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=400&h=300&fit=crop']
         },
         {
           _id: '8',
           name: 'Bluetooth Speaker',
           price: 79.99,
-          images: ['https://via.placeholder.com/400x300/ea580c/ffffff?text=Bluetooth+Speaker']
+          images: ['https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?w=400&h=300&fit=crop']
         },
         {
           _id: '9',
           name: 'Tablet Pro',
           price: 649.99,
-          images: ['https://via.placeholder.com/400x300/16a34a/ffffff?text=Tablet+Pro']
+          images: ['https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?w=400&h=300&fit=crop']
         },
         {
           _id: '10',
           name: 'Webcam HD',
           price: 89.99,
-          images: ['https://via.placeholder.com/400x300/c2410c/ffffff?text=Webcam+HD']
+          images: ['https://images.unsplash.com/photo-1598327105666-5b89351aff97?w=400&h=300&fit=crop']
         },
         {
           _id: '11',
           name: 'Mechanical Keyboard RGB',
           price: 129.99,
-          images: ['https://via.placeholder.com/400x300/9333ea/ffffff?text=RGB+Keyboard']
+          images: ['https://images.unsplash.com/photo-1587829191301-26e5b2800f12?w=400&h=300&fit=crop']
         },
         {
           _id: '12',
           name: 'Monitor 4K Ultra',
           price: 399.99,
-          images: ['https://via.placeholder.com/400x300/1e40af/ffffff?text=4K+Monitor']
+          images: ['https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?w=400&h=300&fit=crop']
         }
       ];
       

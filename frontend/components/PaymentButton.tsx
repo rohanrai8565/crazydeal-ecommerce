@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useState } from 'react';
 import { loadRazorpayScript, createRazorpayOrder, verifyPayment, RazorpayOptions } from '../lib/razorpay';
 
@@ -41,13 +43,28 @@ const PaymentButton: React.FC<PaymentButtonProps> = ({
     <button
       onClick={handlePayment}
       disabled={disabled || loading}
-      className={`
-        bg-blue-600 hover:bg-blue-700 disabled:bg-gray-400
-        text-white font-semibold py-2 px-4 rounded-lg
-        transition-colors duration-200
-        ${loading ? 'cursor-not-allowed' : 'cursor-pointer'}
-        ${className}
-      `}
+      style={{
+        backgroundColor: loading ? '#d1d5db' : '#2563eb',
+        color: 'white',
+        fontWeight: 600,
+        padding: '12px 24px',
+        borderRadius: '8px',
+        border: 'none',
+        cursor: loading ? 'not-allowed' : 'pointer',
+        transition: 'background-color 0.2s',
+        width: '100%',
+        fontSize: '16px'
+      }}
+      onMouseEnter={(e) => {
+        if (!loading && !disabled) {
+          e.currentTarget.style.backgroundColor = '#1d4ed8';
+        }
+      }}
+      onMouseLeave={(e) => {
+        if (!loading && !disabled) {
+          e.currentTarget.style.backgroundColor = '#2563eb';
+        }
+      }}
     >
       {loading ? 'Processing...' : `Pay ₹${amount}`}
     </button>
