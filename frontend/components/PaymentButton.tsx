@@ -26,14 +26,23 @@ const PaymentButton: React.FC<PaymentButtonProps> = ({
     try {
       setLoading(true);
 
+      // Check if amount is valid
+      if (!amount || amount <= 0) {
+        onError?.('Invalid amount');
+        setLoading(false);
+        return;
+      }
+
       // For demo purposes, simulate successful payment without Razorpay
       setTimeout(() => {
         const mockPaymentId = 'pay_' + Math.random().toString(36).substr(2, 9);
+        console.log('Payment successful:', mockPaymentId);
         onSuccess?.(mockPaymentId);
         setLoading(false);
       }, 1000);
 
     } catch (error) {
+      console.error('Payment error:', error);
       onError?.(error instanceof Error ? error.message : 'Payment failed');
       setLoading(false);
     }

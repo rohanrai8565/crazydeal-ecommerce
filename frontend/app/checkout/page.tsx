@@ -11,20 +11,27 @@ export default function CheckoutPage() {
   const [amount, setAmount] = useState(0);
 
   useEffect(() => {
-    const amountParam = searchParams.get('amount');
-    if (amountParam) {
-      setAmount(parseFloat(amountParam));
+    if (searchParams) {
+      const amountParam = searchParams.get('amount');
+      if (amountParam) {
+        setAmount(parseFloat(amountParam));
+      }
     }
   }, [searchParams]);
 
   const handlePaymentSuccess = (paymentId: string) => {
-    alert(`Payment successful! Payment ID: ${paymentId}`);
+    console.log('Payment success handler called with ID:', paymentId);
+    alert(`✅ Payment successful! Payment ID: ${paymentId}`);
     clearCart();
-    window.location.href = '/';
+    // Redirect to home page after 2 seconds
+    setTimeout(() => {
+      window.location.href = '/';
+    }, 2000);
   };
 
   const handlePaymentError = (error: string) => {
-    alert(`Payment failed: ${error}`);
+    console.error('Payment error handler called:', error);
+    alert(`❌ Payment failed: ${error}`);
   };
 
   return (
