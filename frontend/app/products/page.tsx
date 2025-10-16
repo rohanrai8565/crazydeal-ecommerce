@@ -28,73 +28,73 @@ export default function ProductsPage() {
           _id: '1',
           name: 'Gaming Pro Mouse',
           price: 29.99,
-          images: ['https://dummyimage.com/400x300/2563eb/ffffff?text=Gaming+Mouse']
+          images: ['https://picsum.photos/400/300?random=1']
         },
         {
           _id: '2',
           name: 'Wireless Gaming Keyboard',
           price: 49.99,
-          images: ['https://dummyimage.com/400x300/7c3aed/ffffff?text=Gaming+Keyboard']
+          images: ['https://picsum.photos/400/300?random=2']
         },
         {
           _id: '3',
           name: 'Gaming Headset',
           price: 39.99,
-          images: ['https://dummyimage.com/400x300/dc2626/ffffff?text=Gaming+Headset']
+          images: ['https://picsum.photos/400/300?random=3']
         },
         {
           _id: '4',
           name: 'Smartphone Pro Max',
           price: 899.99,
-          images: ['https://dummyimage.com/400x300/059669/ffffff?text=Smartphone+Pro']
+          images: ['https://picsum.photos/400/300?random=4']
         },
         {
           _id: '5',
           name: 'Gaming Laptop',
           price: 1299.99,
-          images: ['https://dummyimage.com/400x300/7c2d12/ffffff?text=Gaming+Laptop']
+          images: ['https://picsum.photos/400/300?random=5']
         },
         {
           _id: '6',
           name: 'Wireless Earbuds',
           price: 19.99,
-          images: ['https://dummyimage.com/400x300/be185d/ffffff?text=Wireless+Earbuds']
+          images: ['https://picsum.photos/400/300?random=6']
         },
         {
           _id: '7',
           name: 'Smart Watch',
           price: 199.99,
-          images: ['https://dummyimage.com/400x300/0891b2/ffffff?text=Smart+Watch']
+          images: ['https://picsum.photos/400/300?random=7']
         },
         {
           _id: '8',
           name: 'Bluetooth Speaker',
           price: 79.99,
-          images: ['https://dummyimage.com/400x300/ea580c/ffffff?text=Bluetooth+Speaker']
+          images: ['https://picsum.photos/400/300?random=8']
         },
         {
           _id: '9',
           name: 'Tablet Pro',
           price: 649.99,
-          images: ['https://dummyimage.com/400x300/16a34a/ffffff?text=Tablet+Pro']
+          images: ['https://picsum.photos/400/300?random=9']
         },
         {
           _id: '10',
           name: 'Webcam HD',
           price: 89.99,
-          images: ['https://dummyimage.com/400x300/c2410c/ffffff?text=Webcam+HD']
+          images: ['https://picsum.photos/400/300?random=10']
         },
         {
           _id: '11',
           name: 'Mechanical Keyboard RGB',
           price: 129.99,
-          images: ['https://dummyimage.com/400x300/9333ea/ffffff?text=RGB+Keyboard']
+          images: ['https://picsum.photos/400/300?random=11']
         },
         {
           _id: '12',
           name: 'Monitor 4K Ultra',
           price: 399.99,
-          images: ['https://dummyimage.com/400x300/1e40af/ffffff?text=4K+Monitor']
+          images: ['https://picsum.photos/400/300?random=12']
         }
       ];
       
