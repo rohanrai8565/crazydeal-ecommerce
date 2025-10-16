@@ -28,73 +28,73 @@ export default function ProductsPage() {
           _id: '1',
           name: 'Gaming Pro Mouse',
           price: 29.99,
-          images: ['data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22400%22 height=%22300%22%3E%3Crect fill=%222563eb%22 width=%22400%22 height=%22300%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-family=%22Arial%22 font-size=%2224%22 fill=%22white%22%3EGaming Mouse%3C/text%3E%3C/svg%3E']
+          images: ['']
         },
         {
           _id: '2',
           name: 'Wireless Gaming Keyboard',
           price: 49.99,
-          images: ['data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22400%22 height=%22300%22%3E%3Crect fill=%227c3aed%22 width=%22400%22 height=%22300%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-family=%22Arial%22 font-size=%2224%22 fill=%22white%22%3EGaming Keyboard%3C/text%3E%3C/svg%3E']
+          images: ['']
         },
         {
           _id: '3',
           name: 'Gaming Headset',
           price: 39.99,
-          images: ['data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22400%22 height=%22300%22%3E%3Crect fill=%22dc2626%22 width=%22400%22 height=%22300%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-family=%22Arial%22 font-size=%2224%22 fill=%22white%22%3EGaming Headset%3C/text%3E%3C/svg%3E']
+          images: ['']
         },
         {
           _id: '4',
           name: 'Smartphone Pro Max',
           price: 899.99,
-          images: ['data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22400%22 height=%22300%22%3E%3Crect fill=%22059669%22 width=%22400%22 height=%22300%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-family=%22Arial%22 font-size=%2224%22 fill=%22white%22%3ESmartphone Pro%3C/text%3E%3C/svg%3E']
+          images: ['']
         },
         {
           _id: '5',
           name: 'Gaming Laptop',
           price: 1299.99,
-          images: ['data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22400%22 height=%22300%22%3E%3Crect fill=%227c2d12%22 width=%22400%22 height=%22300%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-family=%22Arial%22 font-size=%2224%22 fill=%22white%22%3EGaming Laptop%3C/text%3E%3C/svg%3E']
+          images: ['']
         },
         {
           _id: '6',
           name: 'Wireless Earbuds',
           price: 19.99,
-          images: ['data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22400%22 height=%22300%22%3E%3Crect fill=%22be185d%22 width=%22400%22 height=%22300%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-family=%22Arial%22 font-size=%2224%22 fill=%22white%22%3EWireless Earbuds%3C/text%3E%3C/svg%3E']
+          images: ['']
         },
         {
           _id: '7',
           name: 'Smart Watch',
           price: 199.99,
-          images: ['data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22400%22 height=%22300%22%3E%3Crect fill=%220891b2%22 width=%22400%22 height=%22300%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-family=%22Arial%22 font-size=%2224%22 fill=%22white%22%3ESmart Watch%3C/text%3E%3C/svg%3E']
+          images: ['']
         },
         {
           _id: '8',
           name: 'Bluetooth Speaker',
           price: 79.99,
-          images: ['data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22400%22 height=%22300%22%3E%3Crect fill=%22ea580c%22 width=%22400%22 height=%22300%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-family=%22Arial%22 font-size=%2224%22 fill=%22white%22%3EBluetooth Speaker%3C/text%3E%3C/svg%3E']
+          images: ['']
         },
         {
           _id: '9',
           name: 'Tablet Pro',
           price: 649.99,
-          images: ['data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22400%22 height=%22300%22%3E%3Crect fill=%2316a34a%22 width=%22400%22 height=%22300%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-family=%22Arial%22 font-size=%2224%22 fill=%22white%22%3ETablet Pro%3C/text%3E%3C/svg%3E']
+          images: ['']
         },
         {
           _id: '10',
           name: 'Webcam HD',
           price: 89.99,
-          images: ['data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22400%22 height=%22300%22%3E%3Crect fill=%22c2410c%22 width=%22400%22 height=%22300%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-family=%22Arial%22 font-size=%2224%22 fill=%22white%22%3EWebcam HD%3C/text%3E%3C/svg%3E']
+          images: ['']
         },
         {
           _id: '11',
           name: 'Mechanical Keyboard RGB',
           price: 129.99,
-          images: ['data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22400%22 height=%22300%22%3E%3Crect fill=%229333ea%22 width=%22400%22 height=%22300%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-family=%22Arial%22 font-size=%2224%22 fill=%22white%22%3ERGB Keyboard%3C/text%3E%3C/svg%3E']
+          images: ['']
         },
         {
           _id: '12',
           name: 'Monitor 4K Ultra',
           price: 399.99,
-          images: ['data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22400%22 height=%22300%22%3E%3Crect fill=%221e40af%22 width=%22400%22 height=%22300%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-family=%22Arial%22 font-size=%2224%22 fill=%22white%22%3E4K Monitor%3C/text%3E%3C/svg%3E']
+          images: ['']
         }
       ];
       
