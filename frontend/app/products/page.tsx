@@ -28,73 +28,73 @@ export default function ProductsPage() {
           _id: '1',
           name: 'Gaming Pro Mouse',
           price: 29.99,
-          images: ['']
+          images: ['https://m.media-amazon.com/images/I/61qJ8PALTSL._AC_SY200_.jpg']
         },
         {
           _id: '2',
           name: 'Wireless Gaming Keyboard',
           price: 49.99,
-          images: ['']
+          images: ['https://m.media-amazon.com/images/I/71Yy2Ev6-RL._AC_SY200_.jpg']
         },
         {
           _id: '3',
           name: 'Gaming Headset',
           price: 39.99,
-          images: ['']
+          images: ['https://m.media-amazon.com/images/I/71qJ8PALTSL._AC_SY200_.jpg']
         },
         {
           _id: '4',
           name: 'Smartphone Pro Max',
           price: 899.99,
-          images: ['']
+          images: ['https://m.media-amazon.com/images/I/71YLYQBP0pL._AC_SY200_.jpg']
         },
         {
           _id: '5',
           name: 'Gaming Laptop',
           price: 1299.99,
-          images: ['']
+          images: ['https://m.media-amazon.com/images/I/71MV7QVQ02L._AC_SY200_.jpg']
         },
         {
           _id: '6',
           name: 'Wireless Earbuds',
           price: 19.99,
-          images: ['']
+          images: ['https://m.media-amazon.com/images/I/61LinR1YkAL._AC_SY200_.jpg']
         },
         {
           _id: '7',
           name: 'Smart Watch',
           price: 199.99,
-          images: ['']
+          images: ['https://m.media-amazon.com/images/I/71E8aG+qFIL._AC_SY200_.jpg']
         },
         {
           _id: '8',
           name: 'Bluetooth Speaker',
           price: 79.99,
-          images: ['']
+          images: ['https://m.media-amazon.com/images/I/61zb2rAgw5L._AC_SY200_.jpg']
         },
         {
           _id: '9',
           name: 'Tablet Pro',
           price: 649.99,
-          images: ['']
+          images: ['https://m.media-amazon.com/images/I/81Q+oy4XFIL._AC_SY200_.jpg']
         },
         {
           _id: '10',
           name: 'Webcam HD',
           price: 89.99,
-          images: ['']
+          images: ['https://m.media-amazon.com/images/I/61XvmKUJlWL._AC_SY200_.jpg']
         },
         {
           _id: '11',
           name: 'Mechanical Keyboard RGB',
           price: 129.99,
-          images: ['']
+          images: ['https://m.media-amazon.com/images/I/71R8Yq4AXFL._AC_SY200_.jpg']
         },
         {
           _id: '12',
           name: 'Monitor 4K Ultra',
           price: 399.99,
-          images: ['']
+          images: ['https://m.media-amazon.com/images/I/71qJ8PALTSL._AC_SY200_.jpg']
         }
       ];
       
